@@ -170,28 +170,88 @@ async def cb_mode(client: Client, query: CallbackQuery):
     )
 
 
-@app.on_callback_query(pyro_filters.regex("^cfg_mode_(auto|dm)$"))
-async def cb_mode_set(client: Client, query: CallbackQuery):
+@app.on_callback_query(pyro_filters.regex("^cfg_mode_dm$"))
+async def cb_mode_dm(client: Client, query: CallbackQuery):
+    """DM mode — seedha save karo."""
     if not await is_authorized(query.from_user.id):
         await query.answer("⛔ 𝚫ᴄᴄєss ᴅєηιєᴅ", show_alert=True)
         return
-    mode = query.data.split("_")[-1]
-    await save_settings({"mode": mode})
-    await query.answer(f"✅ ϻᴏᴅє → {mode.upper()}", show_alert=False)
+    await save_settings({"mode": "dm"})
+    await query.answer("✅ ᴅᴍ ϻᴏᴅє ᴀᴄᴛιᴠє", show_alert=False)
     await query.edit_message_text(
-        f"🎮 **ϻᴏᴅє sєʟєᴄᴛ ᴋᴀʀᴏ**\n\nᴄᴜʀʀєηᴛ: `{mode.upper()}`",
+        "🎮 **ϻᴏᴅє sєʟєᴄᴛ ᴋᴀʀᴏ**\n\nᴄᴜʀʀєηᴛ: `DM`",
         reply_markup=InlineKeyboardMarkup([
             [
-                InlineKeyboardButton(
-                    f"{'✦ ' if mode=='auto' else ''}˹ 𝚫ᴜᴛᴏ 𝐌ᴏᴅє ˼",
-                    callback_data="cfg_mode_auto",
-                ),
-                InlineKeyboardButton(
-                    f"{'✦ ' if mode=='dm' else ''}˹ 𝐃𝐌 𝐌ᴏᴅє ˼",
-                    callback_data="cfg_mode_dm",
-                ),
+                InlineKeyboardButton("˹ 𝚫ᴜᴛᴏ 𝐌ᴏᴅє ˼", callback_data="cfg_mode_auto"),
+                InlineKeyboardButton("✦ ˹ 𝐃𝐌 𝐌ᴏᴅє ˼", callback_data="cfg_mode_dm"),
             ],
             [InlineKeyboardButton("˹ ◀️ 𝐁ᴀᴄᴋ ˼", callback_data="config_main")],
+        ]),
+    )
+
+
+@app.on_callback_query(pyro_filters.regex("^cfg_mode_auto$"))
+async def cb_mode_auto(client: Client, query: CallbackQuery):
+    """Auto mode — 3 button panel: On, Ready, Back"""
+    if not await is_authorized(query.from_user.id):
+        await query.answer("⛔ 𝚫ᴄᴄєss ᴅєηιєᴅ", show_alert=True)
+        return
+    s   = await get_settings()
+    cur = s.get("mode", "dm")
+    await query.edit_message_text(
+        "🎮 **𝚫ᴜᴛᴏ 𝐌ᴏᴅє**\n\n"
+        "🟢 **ᴏη** — ᴀᴜᴛᴏ ϻᴏᴅє sᴀᴠє ᴋᴀʀᴏ\n"
+        "  _(ϻιᴄ ᴏη/ᴏff ᴅєᴛєᴄᴛ нᴏɢᴀ ᴀᴜᴛᴏ)_\n\n"
+        "📡 **ʀєᴀᴅʏ** — ᴜsєʀʙᴏᴛ ᴛᴀʀɢєᴛ ᴠᴄ ϻєιη ᴊᴏιη ᴋʀᴀᴏ\n"
+        "  _(ρнʟє ᴊᴏιη нᴏɢᴀ, ɢιʀ ϻιᴄ sᴜηєɢᴀ)_\n\n"
+        f"ᴄᴜʀʀєηᴛ ϻᴏᴅє: `{cur.upper()}`",
+        reply_markup=InlineKeyboardMarkup([
+            [
+                InlineKeyboardButton("🟢 ᴏη",    callback_data="cfg_auto_on"),
+                InlineKeyboardButton("📡 ʀєᴀᴅʏ", callback_data="cfg_auto_ready"),
+            ],
+            [InlineKeyboardButton("˹ ◀️ 𝐁ᴀᴄᴋ ˼", callback_data="cfg_mode")],
+        ]),
+    )
+
+
+@app.on_callback_query(pyro_filters.regex("^cfg_auto_on$"))
+async def cb_auto_on(client: Client, query: CallbackQuery):
+    """Auto mode ON — save karo."""
+    if not await is_authorized(query.from_user.id):
+        await query.answer("⛔ 𝚫ᴄᴄєss ᴅєηιєᴅ", show_alert=True)
+        return
+    await save_settings({"mode": "auto"})
+    await query.answer("✅ 𝚫ᴜᴛᴏ ϻᴏᴅє ᴏη!", show_alert=False)
+    await query.edit_message_text(
+        "✅ **𝚫ᴜᴛᴏ ϻᴏᴅє ᴀᴄᴛιᴠє!**\n\n"
+        "🎙️ ᴀʙ ᴊᴀʙ ᴛᴜ ᴠᴄ ϻєιη ϻιᴄ ᴏη ᴋᴀʀєɢᴀ →\n"
+        "ᴜsєʀʙᴏᴛ ᴀᴜᴛᴏ ʀєᴄᴏʀᴅ ᴋʀєɢᴀ ᴀᴜʀ ʟᴏᴏρ ᴄʜᴀʟᴀʏєɢᴀ.\n\n"
+        "💡 ρнʟє **ʀєᴀᴅʏ** ᴅʙᴀᴏ ᴛᴀᴋι ᴜsєʀʙᴏᴛ ᴠᴄ ϻєιη ʙєᴛнє.",
+        reply_markup=InlineKeyboardMarkup([
+            [InlineKeyboardButton("📡 ʀєᴀᴅʏ", callback_data="cfg_auto_ready")],
+            [InlineKeyboardButton("˹ ◀️ 𝐁ᴀᴄᴋ ˼", callback_data="cfg_mode")],
+        ]),
+    )
+
+
+@app.on_callback_query(pyro_filters.regex("^cfg_auto_ready$"))
+async def cb_auto_ready(client: Client, query: CallbackQuery):
+    """Ready — userbot target VC mein silently join karta hai."""
+    if not await is_authorized(query.from_user.id):
+        await query.answer("⛔ 𝚫ᴄᴄєss ᴅєηιєᴅ", show_alert=True)
+        return
+    await query.answer("⏳ ᴊᴏιη ᴋʀ ʀᴀнᴀ нᴜη...", show_alert=False)
+    from VCFIGHTERS.FIGHTERS.Voice import vc_join_ready
+    success, msg = await vc_join_ready()
+    await query.edit_message_text(
+        msg,
+        reply_markup=InlineKeyboardMarkup([
+            [
+                InlineKeyboardButton("🟢 ᴏη",    callback_data="cfg_auto_on"),
+                InlineKeyboardButton("📡 ʀєᴀᴅʏ", callback_data="cfg_auto_ready"),
+            ],
+            [InlineKeyboardButton("˹ ◀️ 𝐁ᴀᴄᴋ ˼", callback_data="cfg_mode")],
         ]),
     )
 
