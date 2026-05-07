@@ -488,4 +488,4 @@ async def vcstatus_handler(client, message: Message):
     )
 
     await message.reply(text)
-    
+        
