@@ -1,6 +1,6 @@
 pyrogram
 TgCrypto
-pytgcalls
+py-tgcalls
 motor
 pymongo
 dnspython
