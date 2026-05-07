@@ -6,14 +6,14 @@
 
 <div align="center">
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&size=22&duration=3000&pause=1000&color=FF4444&center=true&vCenter=true&multiline=true&width=650&height=80&lines=🔥+Record+%7C+Loop+%7C+Destroy+VCs;⚡+Powered+By+PyTgCalls+%2B+Pyrogram;💀+The+Most+Powerful+VC+Fighter+Bot)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&size=22&duration=3000&pause=1000&color=FF4444&center=true&vCenter=true&multiline=true&width=650&height=80&lines=🔥+Record+%7C+Loop+%7C+HEHE+VCs;⚡+Powered+By+PyTgCalls+%2B+Pyrogram;💀+The+Most+Powerful+VC+Fighter+Bot)](https://git.io/typing-svg)
 
 </div>
 
 ---
 
 <div align="center">
-<img src="https://files.catbox.moe/eje8y8.jpeg" width="550" style="border-radius:20px; box-shadow: 0 0 30px rgba(255,50,50,0.5)"/>
+<img src="https://files.catbox.moe/yp40gw.jpg" width="550" style="border-radius:20px; box-shadow: 0 0 30px rgba(255,50,50,0.5)"/>
 </div>
 
 ---
@@ -36,7 +36,7 @@
 
 ## 🌟 Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=YOURNAME/VCFIGHTER&type=Date&theme=dark)](https://star-history.com/#YOURNAME/VCFIGHTER&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=SUDEEPBOTS/VCFIGHTER&type=Date&theme=dark)](https://star-history.com/#SUDEEPBOTS/VCFIGHTER&Date)
 
 </div>
 
