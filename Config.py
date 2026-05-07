@@ -151,3 +151,33 @@ BASS_LEVELS = {
     40: "💀 MAX",
 }
 
+# ══════════════════════════════════════════════════════════════
+#  OPTIONAL — Support & Community Links
+# ══════════════════════════════════════════════════════════════
+
+SUPPORT_CHAT    = _get("SUPPORT_CHAT",    default="https://t.me/Zcziiy")       # Support group link
+SUPPORT_CHANNEL = _get("SUPPORT_CHANNEL", default="https://t.me/Zcziiy")       # Updates channel link
+
+# ══════════════════════════════════════════════════════════════
+#  OPTIONAL — Bot Pictures (used in /start, /help etc)
+#  Comma-separated direct image URLs
+# ══════════════════════════════════════════════════════════════
+
+_raw_pics = _get("VC_PICS", default="")
+VC_PICS: list[str] = (
+    [p.strip() for p in _raw_pics.split(",") if p.strip()]
+    if _raw_pics else [
+        "https://files.catbox.moe/eje8y8.jpeg",
+        "https://files.catbox.moe/ey2jzp.jpeg",
+        "https://files.catbox.moe/ah5y0f.jpeg",
+        "https://files.catbox.moe/we4yju.jpeg",
+    ]
+)
+
+# ══════════════════════════════════════════════════════════════
+#  OPTIONAL — Start Animation
+# ══════════════════════════════════════════════════════════════
+
+START_FIRE_EFFECT  = _bool("START_FIRE_EFFECT",  default=True)   # Fire effect on /start
+FIRE_FRAME_DELAY   = float(_get("FIRE_FRAME_DELAY", default="0.4"))
+DING_DONG_DELETE   = _bool("DING_DONG_DELETE",   default=True)   # Delete animation after
