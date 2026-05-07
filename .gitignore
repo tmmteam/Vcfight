@@ -28,7 +28,6 @@ recordings/
 
 # Env / Config secrets
 .env
-Config.py
 
 # Logs
 *.log
