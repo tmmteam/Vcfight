@@ -1,6 +1,6 @@
 pyrogram==2.0.106
 TgCrypto
-pytgcalls==0.0.24
+py-tgcalls==0.9.7
 motor
 pymongo
 dnspython
