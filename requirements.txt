@@ -1,12 +1,12 @@
-pyrogram
+pyrogram==2.0.106
 TgCrypto
-py-tgcalls
+pytgcalls==0.0.28
 motor
 pymongo
 dnspython
 ffmpeg-python
 aiofiles
 aiohttp
-asyncio
 nest_asyncio
 python-dotenv
+psutil
